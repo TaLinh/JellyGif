@@ -20,12 +20,12 @@ public extension CGImageSource {
     ///     - options: A dictionary that specifies additional creation options of the CGImageSource. See [Image Source Option Dictionary Keys](https://developer.apple.com/documentation/imageio/cgimagesource/image_source_option_dictionary_keys) for the keys you can supply.
     class func sourceFromInfo(_ info: GifInfo, with options: CFDictionary = defaultOptions) -> CGImageSource? {
         switch info {
-            case .name(let name):
-                return sourceFromImageName(name)
-            case .localPath(let url):
-                return sourceFromImagePath(url)
-            case .data(let data):
-                return sourceFromData(data)
+        case .name(let name):
+            return sourceFromImageName(name)
+        case .localPath(let url):
+            return sourceFromImagePath(url)
+        case .data(let data):
+            return sourceFromData(data)
         }
     }
     
@@ -38,7 +38,7 @@ public extension CGImageSource {
         return CGImageSourceCreateWithData(data, options)
     }
     
-    ///Returns a new CGImageSource from the input GifInfo
+    ///Returns a new CGImageSource from the input GIF name
     ///- Parameters:
     ///     - name: The name of the GIF in the main Bundle
     ///     - options: A dictionary that specifies additional creation options of the CGImageSource. See [Image Source Option Dictionary Keys](https://developer.apple.com/documentation/imageio/cgimagesource/image_source_option_dictionary_keys) for the keys you can supply.
@@ -49,7 +49,7 @@ public extension CGImageSource {
     }
     
     
-    ///Returns a new CGImageSource from the input GifInfo
+    ///Returns a new CGImageSource from the input GIF data
     ///- Parameters:
     ///     - data: GIF data
     ///     - options: A dictionary that specifies additional creation options of the CGImageSource. See [Image Source Option Dictionary Keys](https://developer.apple.com/documentation/imageio/cgimagesource/image_source_option_dictionary_keys) for the keys you can supply.
@@ -72,13 +72,24 @@ public extension CGImageSource {
                                kCGImageSourceShouldCacheImmediately: true,
                                kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue!] as CFDictionary
                 return CGImageSourceCreateThumbnailAtIndex(imageSource, index, options)
-            }
-            .compactMap { $0 }
-            .map { UIImage(cgImage: $0) }
+        }
+        .compactMap { $0 }
+        .map { UIImage(cgImage: $0) }
     }
     
     ///Array of frame lengths of a GIF
     var frameDurations: [CFTimeInterval] {
+        guard #available(iOS 13.0, *) else {
+            return [Int](0..<CGImageSourceGetCount(self))
+                .reduce(into: []) { (result, index) in
+                    if let properties = CGImageSourceCopyPropertiesAtIndex(self, index, nil) as? Dictionary<String, Any>,
+                        let gifInfos = properties[kCGImagePropertyGIFDictionary as String] as? Dictionary<String, Any>,
+                        let duration = gifInfos[kCGImagePropertyGIFUnclampedDelayTime as String] as? CFTimeInterval {
+                        return result.append(duration)
+                    }
+                }
+        }
+        
         guard let properties = CGImageSourceCopyProperties(self, nil) as? Dictionary<String, Any>,
             let gifInfos = properties[kCGImagePropertyGIFDictionary as String] as? Dictionary<String, Any>,
             let frameInfos = gifInfos[kCGImagePropertyGIFFrameInfoArray as String] as? [Dictionary<String, CGFloat>]

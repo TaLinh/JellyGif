@@ -98,13 +98,13 @@ public class JellyGifAnimator {
         self.preferredPixelSize = pixelSize
     }
     
-    ///Stop preparing GIF frames and related information
+    ///Stops preparing GIF frames and related information
     func stopPreparingAnimation() {
         preparingOperation?.cancel()
         preparingOperation = nil
     }
     
-    ///Start preparing GIF frames and related information. Calling this method will stop the previous preparing process
+    ///Starts preparing GIF frames and related information. Calling this method will stop the previous preparing process
     func prepareAnimation() {
         stopPreparingAnimation()
         
@@ -118,7 +118,7 @@ public class JellyGifAnimator {
         }
     }
     
-    ///Compute required properties to start animating
+    ///Computes required properties to start animating
     private func setupWith(images: [UIImage], frames: [CFTimeInterval]) {
         self.images = images
         frameDurations = frames
@@ -132,7 +132,7 @@ public class JellyGifAnimator {
         delegate?.gifAnimatorIsReady(self)
     }
     
-    ///Start animating or resume animation if the GIF is in mid animation
+    ///Starts animating or resume animation if the GIF is in mid animation
     func startAnimation() {
         displayLink.isPaused = false
     }
@@ -141,7 +141,7 @@ public class JellyGifAnimator {
         displayLink.isPaused = true
     }
     
-    ///Calculate the next frame and update frame if needed
+    ///Calculates the next frame and update frame if needed
     @objc fileprivate func animateGif(displayLink: CADisplayLink) {
         guard isReady else { return }
         
