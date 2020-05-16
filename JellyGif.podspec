@@ -4,11 +4,11 @@ Pod::Spec.new do |s|
   s.summary      = 'A framework used to animate GIF'
   s.description  = 'A lightweight, performant, and memory efficient framework used to animate GIF'
   s.homepage     = 'https://github.com/TaLinh'
-  s.license      = { :type => 'MIT' }
+  s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.author       = { 'Linh Ta' => 'linhtadev@gmail.com' }
   #s.source       = { :path => '../JellyGif' }
-  s.source       = { :git => 'https://github.com/TaLinh/JellyGif.git', :tag => 'master' }
-  s.source_files  = 'JellyGif'
+  s.source       = { :git => 'https://github.com/TaLinh/JellyGif.git', :tag => '1.0.0' }
+  s.source_files  = 'SwiftyLib/**/*.{h,m,swift}'
 
   s.author             = { 'Linh Ta' => 'linhtadev@gmail.com' }
   s.social_media_url   = 'https://linhta.dev'
