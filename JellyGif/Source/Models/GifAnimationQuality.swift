@@ -15,7 +15,7 @@ public enum GifAnimationQuality {
     case acceptable
     case custom(Int)
     
-    var preferredFramesPerSecond: Int {
+    public var preferredFramesPerSecond: Int {
         switch self {
         case .best:
             return 0

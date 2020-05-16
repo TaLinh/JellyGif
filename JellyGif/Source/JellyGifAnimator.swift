@@ -25,21 +25,21 @@ public extension JellyGifAnimatorDelegate {
 
 ///An object that manages the preparation and animation of a GIF
 public class JellyGifAnimator {
-    static var gifQueue = DispatchQueue(label: "custom.jelly.gif.animator.queue")
+    public static var gifQueue = DispatchQueue(label: "custom.jelly.gif.animator.queue")
     
-    weak var delegate: JellyGifAnimatorDelegate?
+    public weak var delegate: JellyGifAnimatorDelegate?
     
     ///Required information to generate a GIF
-    let imageInfo: GifInfo
+    public let imageInfo: GifInfo
     
     ///The maximum size of a GIF. The closer a this property is to the actual size of the image holder the smaller the memory footprint and the better the CPU performance
-    let preferredPixelSize: GifPixelSize
+    public let preferredPixelSize: GifPixelSize
     
     ///Number of frames per second
-    let preferredAnimationQuality: GifAnimationQuality
+    public let preferredAnimationQuality: GifAnimationQuality
 
     ///The CADisplayLink used to animate the GIF
-    private(set) lazy var displayLink: CADisplayLink = {
+    public private(set) lazy var displayLink: CADisplayLink = {
         let displayLinkProxy = DisplayLinkProxy(animator: self)
         let displayLink = CADisplayLink(target: displayLinkProxy, selector: #selector(DisplayLinkProxy.animateGif(displayLink:)))
         displayLink.preferredFramesPerSecond = preferredAnimationQuality.preferredFramesPerSecond
@@ -49,13 +49,13 @@ public class JellyGifAnimator {
     
     //Property used to save CPU power
     ///The frames of a GIF
-    private(set) var images: [UIImage] = []
+    public private(set) var images: [UIImage] = []
     
     ///The lengths of each frame in a GIF
-    private(set) var frameDurations: [CFTimeInterval] = []
+    public private(set) var frameDurations: [CFTimeInterval] = []
     
     ///An operation used to prepare information needed to start GIF animation
-    private(set) var preparingOperation: JellyGifOperation?
+    public private(set) var preparingOperation: JellyGifOperation?
     
     //Property used to calculate the current frame of a GIF
     private var currentIndex = 0
@@ -66,7 +66,7 @@ public class JellyGifAnimator {
     private var framesStartDurations: [CFTimeInterval] = []
     
     ///The first frame of a GIF that can be used as a placeholder when the animator is preparing the GIF frames
-    var placeholder: UIImage? {
+    public var placeholder: UIImage? {
         guard let imageSource = CGImageSource.sourceFromInfo(imageInfo) else { return nil }
         guard CGImageSourceGetCount(imageSource) > 0 else { return nil }
         guard let cgImage = CGImageSourceCreateImageAtIndex(imageSource, 0, nil) else { return nil}
@@ -74,23 +74,23 @@ public class JellyGifAnimator {
     }
     
     ///A Boolean value indicating whether the GIF is being animated
-    var isStarted: Bool {
+    public var isStarted: Bool {
         return isReady && !displayLink.isPaused
     }
     
     ///A Boolean value indicating whether the GIF generated from the input GifInfo has one or more images
-    var hasImage: Bool {
+    public var hasImage: Bool {
         guard let imageSource = CGImageSource.sourceFromInfo(imageInfo) else { return false }
         return CGImageSourceGetCount(imageSource) > 0
     }
     
     ///A Boolean value indicating whether JellyGifAnimator has finished its preparation process and the GIF can be animated
-    var isReady: Bool {
+    public var isReady: Bool {
         return !images.isEmpty && images.count == frameDurations.count
     }
     
     ///Initializes and returns a newly allocated JellyGifAnimator with the specified properties
-    init(imageInfo: GifInfo,
+    public init(imageInfo: GifInfo,
          pixelSize: GifPixelSize = .original,
          animationQuality: GifAnimationQuality = .best) {
         self.imageInfo = imageInfo
@@ -99,13 +99,13 @@ public class JellyGifAnimator {
     }
     
     ///Stops preparing GIF frames and related information
-    func stopPreparingAnimation() {
+    public func stopPreparingAnimation() {
         preparingOperation?.cancel()
         preparingOperation = nil
     }
     
     ///Starts preparing GIF frames and related information. Calling this method will stop the previous preparing process
-    func prepareAnimation() {
+    public func prepareAnimation() {
         stopPreparingAnimation()
         
         preparingOperation = JellyGifOperation(info: imageInfo, pixelSize: preferredPixelSize) { [weak self] images, frames in
@@ -133,11 +133,11 @@ public class JellyGifAnimator {
     }
     
     ///Starts animating or resume animation if the GIF is in mid animation
-    func startAnimation() {
+    public func startAnimation() {
         displayLink.isPaused = false
     }
 
-    func pauseAnimation() {
+    public func pauseAnimation() {
         displayLink.isPaused = true
     }
     

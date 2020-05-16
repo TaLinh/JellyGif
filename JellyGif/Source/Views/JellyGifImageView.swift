@@ -10,14 +10,14 @@ import UIKit
 
 ///An object that displays a GIF in your interface
 public class JellyGifImageView: UIImageView, JellyGifAnimatorDelegate {
-    var animator: JellyGifAnimator? 
+    public var animator: JellyGifAnimator?
     
     ///Start animating with GifInfo
     ///- Parameters:
     ///     - info: Required information to generate a GIF
     ///     - pixelSize: The maximum size of a GIF. The closer a this property is to the actual size of the imageView (or the image holder) the smaller the memory footprint and the better the CPU performance
     ///     - animationQuality: Number of frames per second
-    func startGif(with info: GifInfo, pixelSize: GifPixelSize = .original, animationQuality: GifAnimationQuality = .best) {
+    public func startGif(with info: GifInfo, pixelSize: GifPixelSize = .original, animationQuality: GifAnimationQuality = .best) {
         animator?.stopPreparingAnimation()
         animator = nil
         
@@ -26,11 +26,11 @@ public class JellyGifImageView: UIImageView, JellyGifAnimatorDelegate {
         animator?.prepareAnimation()
     }
     
-    func resumeGif() {
+    public func resumeGif() {
         animator?.startAnimation()
     }
     
-    func pauseGif() {
+    public func pauseGif() {
         animator?.pauseAnimation()
     }
 }

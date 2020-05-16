@@ -10,11 +10,11 @@ import UIKit
 
 ///An operation object used to prepare information needed to start GIF animation
 public class JellyGifOperation: Operation {
-    let inputInfo: GifInfo
-    let pixelSize: GifPixelSize
-    var completionHandler: ([UIImage], [CFTimeInterval]) -> Void
+    public let inputInfo: GifInfo
+    public let pixelSize: GifPixelSize
+    public var completionHandler: ([UIImage], [CFTimeInterval]) -> Void
 
-    init(info: GifInfo, pixelSize: GifPixelSize,
+    public init(info: GifInfo, pixelSize: GifPixelSize,
          completion: @escaping ([UIImage], [CFTimeInterval]) -> Void) {
         self.inputInfo = info
         self.pixelSize = pixelSize
