@@ -8,12 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		8C8F6E85246EEAE50036F3FD /* JellyGif.h in Headers */ = {isa = PBXBuildFile; fileRef = 8C8F6E83246EEAE50036F3FD /* JellyGif.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8C8F6E8E246EEC300036F3FD /* CGImageSource+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F6E8D246EEC300036F3FD /* CGImageSource+Extension.swift */; };
+		8C8F6E95246EEDAD0036F3FD /* JellyGifAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F6E94246EEDAD0036F3FD /* JellyGifAnimator.swift */; };
+		8C8F6E9A246EEE160036F3FD /* GifAnimationQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F6E99246EEE160036F3FD /* GifAnimationQuality.swift */; };
+		8C8F6E9C246EEE3D0036F3FD /* GifPixelSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F6E9B246EEE3D0036F3FD /* GifPixelSize.swift */; };
+		8C8F6E9E246EEE650036F3FD /* GifInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F6E9D246EEE650036F3FD /* GifInfo.swift */; };
+		8C8F6EA0246EEEEF0036F3FD /* JellyGifOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F6E9F246EEEEF0036F3FD /* JellyGifOperation.swift */; };
+		8C8F6EA6246F80190036F3FD /* JellyGifImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C8F6EA5246F80190036F3FD /* JellyGifImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8C8F6E80246EEAE50036F3FD /* JellyGif.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JellyGif.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C8F6E83246EEAE50036F3FD /* JellyGif.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JellyGif.h; sourceTree = "<group>"; };
 		8C8F6E84246EEAE50036F3FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8C8F6E8D246EEC300036F3FD /* CGImageSource+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGImageSource+Extension.swift"; sourceTree = "<group>"; };
+		8C8F6E94246EEDAD0036F3FD /* JellyGifAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JellyGifAnimator.swift; sourceTree = "<group>"; };
+		8C8F6E99246EEE160036F3FD /* GifAnimationQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifAnimationQuality.swift; sourceTree = "<group>"; };
+		8C8F6E9B246EEE3D0036F3FD /* GifPixelSize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifPixelSize.swift; sourceTree = "<group>"; };
+		8C8F6E9D246EEE650036F3FD /* GifInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GifInfo.swift; sourceTree = "<group>"; };
+		8C8F6E9F246EEEEF0036F3FD /* JellyGifOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyGifOperation.swift; sourceTree = "<group>"; };
+		8C8F6EA5246F80190036F3FD /* JellyGifImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JellyGifImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +60,49 @@
 		8C8F6E82246EEAE50036F3FD /* JellyGif */ = {
 			isa = PBXGroup;
 			children = (
+				8C8F6E93246EEDA00036F3FD /* Source */,
+				8C8F6E8C246EEBF00036F3FD /* Extensions */,
 				8C8F6E83246EEAE50036F3FD /* JellyGif.h */,
 				8C8F6E84246EEAE50036F3FD /* Info.plist */,
 			);
 			path = JellyGif;
+			sourceTree = "<group>";
+		};
+		8C8F6E8C246EEBF00036F3FD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C8F6E8D246EEC300036F3FD /* CGImageSource+Extension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8C8F6E93246EEDA00036F3FD /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				8C8F6EA4246F800D0036F3FD /* Views */,
+				8C8F6E98246EEE080036F3FD /* Models */,
+				8C8F6E94246EEDAD0036F3FD /* JellyGifAnimator.swift */,
+				8C8F6E9F246EEEEF0036F3FD /* JellyGifOperation.swift */,
+			);
+			path = Source;
+			sourceTree = "<group>";
+		};
+		8C8F6E98246EEE080036F3FD /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C8F6E9D246EEE650036F3FD /* GifInfo.swift */,
+				8C8F6E9B246EEE3D0036F3FD /* GifPixelSize.swift */,
+				8C8F6E99246EEE160036F3FD /* GifAnimationQuality.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C8F6EA4246F800D0036F3FD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8C8F6EA5246F80190036F3FD /* JellyGifImageView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -95,6 +148,7 @@
 				TargetAttributes = {
 					8C8F6E7F246EEAE50036F3FD = {
 						CreatedOnToolsVersion = 11.3.1;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -131,6 +185,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C8F6E8E246EEC300036F3FD /* CGImageSource+Extension.swift in Sources */,
+				8C8F6EA0246EEEEF0036F3FD /* JellyGifOperation.swift in Sources */,
+				8C8F6E95246EEDAD0036F3FD /* JellyGifAnimator.swift in Sources */,
+				8C8F6E9A246EEE160036F3FD /* GifAnimationQuality.swift in Sources */,
+				8C8F6EA6246F80190036F3FD /* JellyGifImageView.swift in Sources */,
+				8C8F6E9C246EEE3D0036F3FD /* GifPixelSize.swift in Sources */,
+				8C8F6E9E246EEE650036F3FD /* GifInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +321,7 @@
 		8C8F6E89246EEAE50036F3FD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BMXC39C5SJ;
@@ -276,6 +338,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = linhta.JellyGif;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -284,6 +347,7 @@
 		8C8F6E8A246EEAE50036F3FD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = BMXC39C5SJ;
