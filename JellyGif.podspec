@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
   s.author       = { 'Linh Ta' => 'linhtadev@gmail.com' }
   #s.source       = { :path => '../JellyGif' }
   s.source       = { :git => 'https://github.com/TaLinh/JellyGif.git', :tag => '1.0.0' }
-  s.source_files  = 'SwiftyLib/**/*.{h,m,swift}'
+  s.source_files  = 'JellyGif/**/*.{h,m,swift}'
 
   s.author             = { 'Linh Ta' => 'linhtadev@gmail.com' }
   s.social_media_url   = 'https://linhta.dev'
