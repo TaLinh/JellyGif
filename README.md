@@ -81,6 +81,8 @@ class ViewController: UIViewController {
 
 extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
   //Your Code
+  //...
+  
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     //dequeue cell
     //...
@@ -110,8 +112,8 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
   }
 
-  //Pause animation and the preparation process if the cell is not visible
   func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    //Pause animation and the preparation process if the cell is not visible
     animators[indexPath]?.pauseAnimation()
     animators[indexPath]?.stopPreparingAnimation()
   }
@@ -140,18 +142,19 @@ extension ViewController: JellyGifAnimatorDelegate {
 |SwiftyGif      |2%                 |44.6Mb                   |
 |Gifu           |2%                 |46.3Mb                   |
 |***JellyGif*** |***1%***           |***46.3Mb***             |
-|***JellyGif (optimized mode on)***|***1%***      |***30.3Mb***  |
+|***JellyGif (optimized mode on)***|***1%***   |***30.3Mb***  |
 
-#### Displays 10 Images
+#### Displays 10 images
 |               |CPU Usage |Memory Usage |
 |:-------------:|:-----------------:|:-----------------------:|
 |SwiftyGif      |34%                |31.7Mb                   |
 |Gifu           |6%                 |200Mb                    |
 |***JellyGif*** |***6%***           |***200Mb***              |
-|***JellyGif (optimized mode on)***|***5%***      |***39.1Mb***  |
+|***JellyGif (optimized mode on)***|***5%***   |***39.1Mb***  |
 
 Measured on an iPhone Xs Max, iOS 13.3.1 and Xcode 11.3.1
 
 ## Compatibility
 - iOS 10.0+
 - Swift 5.0
+- Xcode 10+
