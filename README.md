@@ -17,6 +17,7 @@ Lightweight, performant, and memory efficient Gif framework
 #### With CocoaPods
 ```ruby
 source 'https://cocoapods.org/pods/JellyGif'
+
 use_frameworks!
 pod 'JellyGif'
 ```
@@ -66,7 +67,7 @@ func gifAnimatorDidChangeImage(_ image: UIImage, sender: JellyGifAnimator) {
 `JellyGifAnimator` let you control every aspect of a Gif including its maximum output size - `pixelSize` and its frames per second - `animationQuality`. The closer the `pixelSize` property is to the actual size of the image holder the smaller the memory footprint and the better the CPU performance.
 
 #### UICollectionView & UITableView
-To use `JellyGifAnimator` with an `UICollectionView` or an `UITableView`, creates a dictionary of `JellyGifAnimator` inside the owner of the `UICollectionView` or `UITableView` and conforms to `JellyGifAnimatorDelegate`
+To use `JellyGifAnimator` with an `UICollectionView` or an `UITableView`, create a dictionary of `JellyGifAnimator` inside the owner of the `UICollectionView` or `UITableView` and conform to `JellyGifAnimatorDelegate`
 
 ~~~swift
 import JellyGif
