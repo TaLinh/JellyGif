@@ -16,7 +16,7 @@ Lightweight, performant, and memory efficient Gif framework
 
 #### With CocoaPods
 ```ruby
-source 'https://cocoapods.org/pods/JellyGif'
+#source 'https://cocoapods.org/pods/JellyGif'
 
 use_frameworks!
 pod 'JellyGif'
