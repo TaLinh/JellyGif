@@ -67,13 +67,12 @@ public extension CGImageSource {
     ///     - maxSize: The maximum size of generated images
     class func getResizedImages(from imageSource: CGImageSource, maxSize: CGFloat) -> [UIImage] {
         return [Int](0..<CGImageSourceGetCount(imageSource))
-            .map { index -> CGImage? in
+            .compactMap { index -> CGImage? in
                 let options = [kCGImageSourceThumbnailMaxPixelSize: maxSize,
                                kCGImageSourceShouldCacheImmediately: true,
                                kCGImageSourceCreateThumbnailFromImageAlways: kCFBooleanTrue!] as CFDictionary
                 return CGImageSourceCreateThumbnailAtIndex(imageSource, index, options)
         }
-        .compactMap { $0 }
         .map { UIImage(cgImage: $0) }
     }
     
@@ -96,16 +95,14 @@ public extension CGImageSource {
             else { return [] }
         
         return frameInfos
-            .map { $0[kCGImagePropertyGIFDelayTime as String] }
-            .compactMap { $0 }
+            .compactMap { $0[kCGImagePropertyGIFDelayTime as String] }
             .map { CFTimeInterval($0) }
     }
     
     ///Array of original - unresized frames of a GIF
     var fullSizeImages: [UIImage] {
         return [Int](0..<CGImageSourceGetCount(self))
-            .map { CGImageSourceCreateImageAtIndex(self, $0, nil) }
-            .compactMap { $0 }
+            .compactMap { CGImageSourceCreateImageAtIndex(self, $0, nil) }
             .map { UIImage(cgImage: $0) }
     }
     
