@@ -42,7 +42,12 @@ public class JellyGifAnimator {
     public private(set) lazy var displayLink: CADisplayLink = {
         let displayLinkProxy = DisplayLinkProxy(animator: self)
         let displayLink = CADisplayLink(target: displayLinkProxy, selector: #selector(DisplayLinkProxy.animateGif(displayLink:)))
-        displayLink.preferredFramesPerSecond = preferredAnimationQuality.preferredFramesPerSecond
+        if #available(iOS 10.0, *) {
+            displayLink.preferredFramesPerSecond = preferredAnimationQuality.preferredFramesPerSecond
+        } else {
+            // Fallback on earlier versions
+            displayLink.frameInterval = preferredAnimationQuality.preferredFramesPerSecond
+        }
         displayLink.add(to: .main, forMode: .common)
         return displayLink
     }()
