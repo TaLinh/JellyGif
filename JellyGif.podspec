@@ -12,8 +12,8 @@ Pod::Spec.new do |s|
 
   s.author             = { 'Linh Ta' => 'linhtadev@gmail.com' }
   s.social_media_url   = 'https://linhta.dev'
-  s.platform  = :ios, '10.0'
-  s.ios.deployment_target = '10.0'
+  s.platform  = :ios, '9.0'
+  s.ios.deployment_target = '9.0'
   s.swift_version = '5.0'
   s.ios.framework  = 'UIKit'
 end
