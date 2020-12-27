@@ -156,6 +156,6 @@ extension ViewController: JellyGifAnimatorDelegate {
 Measured on an iPhone Xs Max, iOS 13.3.1 and Xcode 11.3.1
 
 ## Compatibility
-- iOS 10.0+
+- iOS 9.0+
 - Swift 5.0
 - Xcode 10+
