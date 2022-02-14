@@ -9,21 +9,22 @@
 import UIKit
 
 ///An operation object used to prepare information needed to start GIF animation
-public class JellyGifOperation: Operation {
+public class JellyGifOperation {
     public let inputInfo: GifInfo
     public let pixelSize: GifPixelSize
     public var completionHandler: ([UIImage], [CFTimeInterval]) -> Void
 
+    private var isCancelled = false
+  
     public init(info: GifInfo, pixelSize: GifPixelSize,
          completion: @escaping ([UIImage], [CFTimeInterval]) -> Void) {
         self.inputInfo = info
         self.pixelSize = pixelSize
         self.completionHandler = completion
-        super.init()
     }
     
-    override public func main() {
-        guard isCancelled == false else { return }
+    public func start() {
+        guard self.isCancelled == false else { return }
         
         let imageSource = CGImageSource.sourceFromInfo(inputInfo)
         let frames = imageSource?.frameDurations ?? []
@@ -40,5 +41,9 @@ public class JellyGifOperation: Operation {
             guard self?.isCancelled == false else { return }
             self?.completionHandler(images, frames)
         }
+    }
+  
+    public func cancel() {
+      self.isCancelled = true
     }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 ///Methods for managing JellyGifAnimator
-public protocol JellyGifAnimatorDelegate: class {
+public protocol JellyGifAnimatorDelegate: AnyObject {
     func gifAnimatorIsReady(_ sender: JellyGifAnimator)
     
     ///Registers an UIImageView to display GIF frames
@@ -113,8 +113,8 @@ public class JellyGifAnimator {
             self?.preparingOperation = nil
         }
         
-        JellyGifAnimator.gifQueue.async {
-            self.preparingOperation?.start()
+        JellyGifAnimator.gifQueue.async { [weak self] in
+            self?.preparingOperation?.start()
         }
     }
     
